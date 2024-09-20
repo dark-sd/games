@@ -8,20 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #121212;
-            color: white;
-            font-family: 'Amiri', serif;
             margin: 0;
             padding: 20px;
+            font-family: 'Amiri', serif;
             font-size: 18px;
             position: relative;
             min-height: 100vh;
             padding-bottom: 100px;
+            animation: gradientAnimation 15s ease infinite;
+            background: linear-gradient(270deg, #003366, #000000, #6A0DAD, #8B0000);
+            background-size: 400% 400%;
         }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .header {
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 10px;
         }
         .social-icons {
             display: flex;
@@ -30,11 +39,11 @@
         .social-icons a {
             color: #f0f0f0;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 40px;
         }
         .search-container {
             text-align: center;
-            margin: 20px 0;
+            margin: 10px 0;
             position: relative;
         }
         .search-container input {
@@ -64,27 +73,36 @@
             justify-content: space-between;
         }
         .game {
-            background-color: #1e1e1e;
-            border: 1px solid #444;
-            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff; /* لون خلفية أبيض */
+            border: 2px solid #003366; /* لون الحدود أزرق غامق */
+            border-radius: 15px; /* حواف دائرية أكثر */
             padding: 10px;
             margin: 10px;
             width: calc(24% - 40px);
             box-sizing: border-box;
             text-align: center;
             transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* ظل خفيف لإطار اللعبة */
         }
+
         .game:hover {
             transform: scale(1.05);
         }
+
         .game img {
-            width: 200px;
+            width: 230px;
             height: 250px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 10px; /* حواف دائرية للصورة */
         }
+        
         .game h2 {
-            color: #28a745;
+            color: #006400; /* الأخضر الغامق */
+        }
+        .game p {
+            color: black; /* حجم الملف بالأسود */
         }
         .button {
             padding: 10px 15px;
@@ -93,6 +111,7 @@
             cursor: pointer;
             margin: 5px 0;
             font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s; /* تأثير الحركة */
         }
         .download-button {
             background-color: #dc3545;
@@ -102,6 +121,7 @@
         }
         .download-button:hover {
             background-color: #c82333;
+            transform: scale(1.1); /* تكبير عند التمرير */
         }
         .pagination {
             margin-top: 20px;
@@ -167,17 +187,12 @@
         .scroll-to-bottom {
             bottom: 20px;
         }
-        .arrow {
-            font-size: 24px;
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
     </div>
@@ -225,7 +240,7 @@
                 <div class="game">
                     <img src="${game.logo}" alt="${game.name}">
                     <h2>${game.name}</h2>
-                    <p>حجم الملف: ${game.size}</p>
+                    <p>حجم الملف: <span style="color: black;">${game.size}</span></p>
                     <button class="button download-button">تحميل</button>
                 </div>
             `).join('');
