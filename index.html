@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة تنزيل الألعاب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212; /* لون خلفية داكن */
+            color: white;
+            font-family: 'Amiri', serif;
+            margin: 0;
+            padding: 20px;
+            font-size: 18px;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            color: #f0f0f0; /* لون رمادي فاتح */
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .search-container input {
+            padding: 10px;
+            width: 300px;
+            font-size: 18px;
+            border: 1px solid #444; /* لون إطار داكن */
+            border-radius: 5px;
+            background-color: #222; /* لون خلفية داكن */
+            color: white;
+        }
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 18px;
+            background-color: #007BFF; /* لون أزرق احترافي */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3; /* لون أزرق أغمق */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .game {
+            background-color: #1e1e1e; /* لون خلفية أفتح */
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: calc(24% - 40px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .game img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .game h2 {
+            color: #28a745; /* لون أخضر */
+        }
+        .button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .download-button {
+            background-color: #dc3545; /* لون أحمر احترافي */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .download-button:hover {
+            background-color: #c82333; /* لون أحمر أغمق */
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination button {
+            padding: 15px 20px;
+            font-size: 15px;
+            background-color: #6c757d; /* لون رمادي */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        .pagination button:hover {
+            background-color: #5a6268; /* لون رمادي أغمق */
+        }
+        .page-numbers {
+            font-size: 15px;
+            background-color: #6c757d; /* لون رمادي */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .page-numbers.active {
+            background-color: #5a6268; /* لون رمادي أغمق */
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #aaa; /* لون رمادي فاتح */
+            font-size: 14px;
+        }
+        .scroll-button {
+            position: fixed;
+            right: 20px;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            color: black;
+            cursor: pointer;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .scroll-button:hover {
+            background-color: #ddd;
+        }
+        .scroll-to-top {
+            bottom: 80px;
+        }
+        .scroll-to-bottom {
+            bottom: 20px;
+        }
+        .arrow {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://telegram.org" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://wa.me" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." oninput="searchGames()">
+        <button onclick="searchGames()">بحث</button>
+    </div>
+    <div class="container" id="gameContainer"></div>
+    <div class="pagination" id="pagination">
+        <button onclick="prevPage()" id="prevBtn" disabled>السابق</button>
+        <span id="pageNumbers"></span>
+        <button onclick="nextPage()" id="nextBtn">التالي</button>
+    </div>
+
+    <div class="footer">
+        © 2024 جميع الحقوق محفوظة.
+    </div>
+
+    <button class="scroll-button scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="scroll-button scroll-to-bottom" id="scrollToBottom" onclick="scrollToBottom()">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+
+    <script>
+        const gamesPerPage = 12;
+        let currentPage = 1;
+        let filteredGames = [];
+
+        const games = [
+            { name: "لعبة 1", size: "50 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+1", link: "https://example.com/game1" },
+            { name: "لعبة 2", size: "70 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+2", link: "https://example.com/game2" },
+            { name: "لعبة 3", size: "30 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+3", link: "https://example.com/game3" },
+            { name: "لعبة 4", size: "80 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+4", link: "https://example.com/game4" },
+            { name: "لعبة 5", size: "45 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+5", link: "https://example.com/game5" },
+            { name: "لعبة 6", size: "55 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+6", link: "https://example.com/game6" },
+            { name: "لعبة 7", size: "90 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+7", link: "https://example.com/game7" },
+            { name: "لعبة 8", size: "40 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+8", link: "https://example.com/game8" },
+            { name: "لعبة 9", size: "25 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+9", link: "https://example.com/game9" },
+            { name: "لعبة 10", size: "35 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+10", link: "https://example.com/game10" },
+            { name: "لعبة 11", size: "75 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+11", link: "https://example.com/game11" },
+            { name: "لعبة 12", size: "65 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+12", link: "https://example.com/game12" },
+            { name: "لعبة 13", size: "60 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+13", link: "https://example.com/game13" },
+            { name: "لعبة 14", size: "90 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+14", link: "https://example.com/game14" },
+        ];
+
+        function displayGames() {
+            const start = (currentPage - 1) * gamesPerPage;
+            const end = start + gamesPerPage;
+            const gamesToDisplay = filteredGames.length > 0 ? filteredGames.slice(start, end) : games.slice(start, end);
+
+            const gameContainer = document.getElementById('gameContainer');
+            gameContainer.innerHTML = gamesToDisplay.map(game => `
+                <div class="game">
+                    <img src="${game.logo}" alt="${game.name}">
+                    <h2>${game.name}</h2>
+                    <p>حجم الملف: ${game.size}</p>
+                    <button class="button download-button">تحميل</button>
+                </div>
+            `).join('');
+
+            updatePagination();
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil((filteredGames.length > 0 ? filteredGames.length : games.length) / gamesPerPage);
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+
+            const pageNumbersContainer = document.getElementById('pageNumbers');
+            pageNumbersContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const span = document.createElement('span');
+                span.textContent = i;
+                span.className = 'page-numbers' + (i === currentPage ? ' active' : '');
+                span.onclick = () => {
+                    currentPage = i;
+                    displayGames();
+                };
+                pageNumbersContainer.appendChild(span);
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil((filteredGames.length > 0 ? filteredGames.length : games.length) / gamesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayGames();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayGames();
+            }
+        }
+
+        function searchGames() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            filteredGames = games.filter(game => game.name.toLowerCase().includes(query));
+            currentPage = 1;
+            displayGames();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        window.onscroll = function() {
+            const scrollToTopButton = document.getElementById('scrollToTop');
+            const scrollToBottomButton = document.getElementById('scrollToBottom');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopButton.style.display = "flex";
+            } else {
+                scrollToTopButton.style.display = "none";
+            }
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 20) {
+                scrollToBottomButton.style.display = "none";
+            } else {
+                scrollToBottomButton.style.display = "flex";
+            }
+        };
+
+        displayGames();
+    </script>
+</body>
+</html>
