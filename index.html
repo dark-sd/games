@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>dark-sd games</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -11,10 +12,9 @@
             margin: 0;
             padding: 20px;
             font-family: 'Amiri', serif;
-            font-size: 18px;
+            font-size: 1rem;
             position: relative;
             min-height: 100vh;
-            padding-bottom: 100px;
             animation: gradientAnimation 15s ease infinite;
             background: linear-gradient(270deg, #003366, #000000, #6A0DAD, #8B0000);
             background-size: 400% 400%;
@@ -30,61 +30,70 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
+
         .social-icons {
             display: flex;
-            gap: 10px;
+            gap: 0.5rem;
         }
+
         .social-icons a {
             color: #f0f0f0;
             text-decoration: none;
-            font-size: 40px;
+            font-size: 2rem;
         }
+
         .search-container {
             text-align: center;
-            margin: 10px 0;
+            margin: 1rem 0;
             position: relative;
         }
+
         .search-container input {
-            padding: 10px;
-            width: 300px;
-            font-size: 18px;
+            padding: 0.625rem;
+            width: 80%;
+            max-width: 400px;
+            font-size: 1rem;
             border: 1px solid #444;
-            border-radius: 5px;
+            border-radius: 0.3125rem;
             background-color: #222;
             color: white;
         }
+
         .search-container button {
-            padding: 10px 15px;
-            font-size: 18px;
+            padding: 0.625rem 1rem;
+            font-size: 1rem;
             background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 0.3125rem;
             cursor: pointer;
         }
+
         .search-container button:hover {
             background-color: #0056b3;
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
+
         .game {
             position: relative;
             overflow: hidden;
-            background-color: #ffffff; /* لون خلفية أبيض */
-            border: 2px solid #003366; /* لون الحدود أزرق غامق */
-            border-radius: 15px; /* حواف دائرية أكثر */
-            padding: 10px;
-            margin: 10px;
-            width: calc(24% - 40px);
+            background-color: #ffffff;
+            border: 2px solid #003366;
+            border-radius: 0.9375rem;
+            padding: 1rem;
+            margin: 0.625rem;
+            width: calc(24% - 1.25rem);
             box-sizing: border-box;
             text-align: center;
             transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* ظل خفيف لإطار اللعبة */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .game:hover {
@@ -92,83 +101,92 @@
         }
 
         .game img {
-            width: 230px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px; /* حواف دائرية للصورة */
+            width: 100%;
+            max-width: 230px;
+            height: auto;
+            border-radius: 0.625rem;
         }
         
         .game h2 {
-            color: #006400; /* الأخضر الغامق */
+            color: #006400;
         }
+
         .game p {
-            color: black; /* حجم الملف بالأسود */
+            color: black;
         }
+
         .button {
-            padding: 10px 15px;
+            padding: 0.625rem 1rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 0.3125rem;
             cursor: pointer;
-            margin: 5px 0;
+            margin: 0.3125rem 0;
             font-weight: bold;
-            transition: transform 0.3s, background-color 0.3s; /* تأثير الحركة */
+            transition: transform 0.3s, background-color 0.3s;
         }
+
         .download-button {
             background-color: #dc3545;
             color: white;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: bold;
         }
+
         .download-button:hover {
             background-color: #c82333;
-            transform: scale(1.1); /* تكبير عند التمرير */
+            transform: scale(1.1);
         }
+
         .pagination {
-            margin-top: 20px;
+            margin-top: 1rem;
             text-align: center;
         }
+
         .pagination button {
-            padding: 15px 20px;
-            font-size: 15px;
+            padding: 0.9375rem 1.25rem;
+            font-size: 0.9375rem;
             background-color: #6c757d;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 0.3125rem;
             cursor: pointer;
-            margin: 0 10px;
+            margin: 0 0.625rem;
             font-weight: bold;
         }
+
         .pagination button:hover {
             background-color: #5a6268;
         }
+
         .page-numbers {
-            font-size: 15px;
+            font-size: 0.9375rem;
             background-color: #6c757d;
             color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin: 0 5px;
+            padding: 0.625rem 1rem;
+            border-radius: 0.3125rem;
+            margin: 0 0.3125rem;
             cursor: pointer;
         }
+
         .page-numbers.active {
             background-color: #5a6268;
         }
+
         .footer {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
+            position: relative; /* تغيير إلى relative */
             text-align: center;
             color: #aaa; 
-            font-size: 14px;
+            font-size: 0.875rem;
+            margin-top: 20px; /* إضافة مسافة أعلى */
         }
+
         .scroll-button {
             position: fixed;
-            right: 20px;
+            right: 1rem;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 3rem;
+            height: 3rem;
             background-color: #fff;
             color: black;
             cursor: pointer;
@@ -178,14 +196,30 @@
             justify-content: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         .scroll-button:hover {
             background-color: #ddd;
         }
+
         .scroll-to-top {
-            bottom: 80px;
+            bottom: 5rem;
         }
+
         .scroll-to-bottom {
-            bottom: 20px;
+            bottom: 1rem;
+        }
+
+        /* استعلامات الوسائط */
+        @media (max-width: 768px) {
+            .game {
+                width: calc(48% - 1.25rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game {
+                width: 100%;
+            }
         }
     </style>
 </head>
