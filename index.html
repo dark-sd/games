@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dark-sd GAMES</title>
+    <title>صفحة تنزيل الألعاب</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #121212;
+            background-color: #121212; /* لون خلفية داكن */
             color: white;
             font-family: 'Amiri', serif;
             margin: 0;
@@ -28,7 +28,7 @@
             gap: 10px;
         }
         .social-icons a {
-            color: #f0f0f0;
+            color: #f0f0f0; /* لون رمادي فاتح */
             text-decoration: none;
             font-size: 24px;
         }
@@ -41,22 +41,22 @@
             padding: 10px;
             width: 300px;
             font-size: 18px;
-            border: 1px solid #444;
+            border: 1px solid #444; /* لون إطار داكن */
             border-radius: 5px;
-            background-color: #222;
+            background-color: #222; /* لون خلفية داكن */
             color: white;
         }
         .search-container button {
             padding: 10px 15px;
             font-size: 18px;
-            background-color: #007BFF;
+            background-color: #007BFF; /* لون أزرق احترافي */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         .search-container button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* لون أزرق أغمق */
         }
         .container {
             display: flex;
@@ -64,7 +64,7 @@
             justify-content: space-between;
         }
         .game {
-            background-color: #1e1e1e;
+            background-color: #1e1e1e; /* لون خلفية أفتح */
             border: 1px solid #444;
             border-radius: 5px;
             padding: 10px;
@@ -80,7 +80,7 @@
             border-radius: 5px;
         }
         .game h2 {
-            color: #28a745;
+            color: #28a745; /* لون أخضر */
         }
         .button {
             padding: 10px 15px;
@@ -91,13 +91,13 @@
             font-weight: bold;
         }
         .download-button {
-            background-color: #dc3545;
+            background-color: #dc3545; /* لون أحمر احترافي */
             color: white;
             font-size: 16px;
             font-weight: bold;
         }
         .download-button:hover {
-            background-color: #c82333;
+            background-color: #c82333; /* لون أحمر أغمق */
         }
         .pagination {
             margin-top: 20px;
@@ -106,7 +106,7 @@
         .pagination button {
             padding: 15px 20px;
             font-size: 15px;
-            background-color: #6c757d;
+            background-color: #6c757d; /* لون رمادي */
             color: white;
             border: none;
             border-radius: 5px;
@@ -115,11 +115,11 @@
             font-weight: bold;
         }
         .pagination button:hover {
-            background-color: #5a6268;
+            background-color: #5a6268; /* لون رمادي أغمق */
         }
         .page-numbers {
             font-size: 15px;
-            background-color: #6c757d;
+            background-color: #6c757d; /* لون رمادي */
             color: white;
             padding: 10px 15px;
             border-radius: 5px;
@@ -127,7 +127,7 @@
             cursor: pointer;
         }
         .page-numbers.active {
-            background-color: #5a6268;
+            background-color: #5a6268; /* لون رمادي أغمق */
         }
         .footer {
             position: absolute;
@@ -135,7 +135,7 @@
             left: 0;
             right: 0;
             text-align: center;
-            color: #aaa;
+            color: #aaa; /* لون رمادي فاتح */
             font-size: 14px;
         }
         .scroll-button {
@@ -171,10 +171,10 @@
 <body>
     <div class="header">
         <div class="social-icons">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://telegram.org" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://wa.me" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i></a>
         </div>
     </div>
     <div class="search-container">
@@ -189,7 +189,7 @@
     </div>
 
     <div class="footer">
-        © 2024 dark-sd جميع الحقوق محفوظة.
+        © 2024 جميع الحقوق محفوظة.
     </div>
 
     <button class="scroll-button scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
@@ -205,10 +205,10 @@
         let filteredGames = [];
 
         const games = [
-            { name: "قريبا", size: "000", logo: "#", link: "#" },
-            { name: "قريبا", size: "000", logo: "#", link: "#" },
-            { name: "قريبا", size: "000", logo: "#", link: "#" },
-            { name: "قريبا", size: "000", logo: "#", link: "#" },
+            { name: "لعبة 1", size: "50 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+1", link: "https://example.com/game1" },
+            { name: "لعبة 2", size: "70 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+2", link: "https://example.com/game2" },
+            { name: "لعبة 3", size: "30 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+3", link: "https://example.com/game3" },
+            { name: "لعبة 4", size: "80 ميغابايت", logo: "https://via.placeholder.com/200x250?text=Logo+4", link: "https://example.com/game4" },
         ];
 
         function displayGames() {
